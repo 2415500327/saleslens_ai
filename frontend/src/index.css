@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Prevent any horizontal overflow on mobile */
+  html, body {
+    @apply m-0 p-0 overflow-x-hidden;
+    -webkit-text-size-adjust: 100%; /* stop iOS from auto-inflating font sizes */
+  }
+
+  body {
+    @apply bg-background text-zinc-100 font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.05) 0%, transparent 50%),
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+  }
+
+  /* Prevent text overflow on small screens */
+  * {
+    word-break: break-word;
+  }
+}
+
+/* ── Techy Glass Card ─────────────────────────────────────────────────── */
+.glass-panel {
+  @apply bg-black/40 backdrop-blur-xl border border-zinc-800 rounded-xl shadow-2xl transition-all duration-300;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+.glass-panel:hover {
+  @apply border-primary/40;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+}
+
+/* ── Custom scrollbar (desktop only) ─────────────────────────────────── */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar       { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background-color: #334155; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background-color: #475569; }
+}
